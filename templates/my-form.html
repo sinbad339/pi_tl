@@ -1,0 +1,37 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<form method="POST">
+
+    <h1><center>TESTING Traffic Light Controller</center></h1>
+
+
+    <h3>Mode</h3>
+    <input type="radio" name="mode" value="Traffic Light">Traffic Light<br>
+    <input type="radio" name="mode" value="Parkig Distance">Parkig Distance<br>
+    <input type="radio" name="mode" value="Sunday at the Speedway">Sunday at the Speedway<br>
+    <input type="radio" name="mode" value="Test">Test<br>
+<br>
+<br>
+	<h3>Traffic Light Configuration</h3>
+	Rate (0 - 1.0)
+    <input type = "text" name="tl_rate" id = tl_rate>
+<br>
+<br>
+    <h3>Parking Distance Configuration</h3>
+	Green <=> Yellow Distance (inches)
+    <input name="g2y_dist">
+<br>
+	Yellow <=> YelloRedw Distance (inches)
+    <input name="y2r_dist">
+<br>
+	Hysteresis (inches)
+    <input name="hyst">
+<br>
+<br>
+	<h3>Sunday at the Speedway Configuration</h3>
+	Rate (0 - 1.0)
+    <input name="sats_rate">
+<br>
+<br>
+    <input type="submit">
+</form>

@@ -1,0 +1,47 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<html>
+   <body>
+
+    <h2><center>Traffic Light Controller</center></h2>
+		
+      <form method = post>
+            {{ form.hidden_tag() }}
+            
+               <h3>{{ form.mode.label }}</h3> {{ form.mode }}
+
+               <h3>Traffic Light</h3>
+               {{ form.tl_rate.label }}
+               {{ form.tl_rate }}
+               <br>
+               
+               <h3>Parking</h3>
+               {{ form.g2y_dist.label }}
+               {{ form.g2y_dist }}
+               <br>
+               
+               {{ form.y2r_dist.label }}
+               {{ form.y2r_dist }}
+               <br>
+
+               {{ form.hyst.label }}
+               {{ form.hyst }}
+               <br>
+               
+               <h3>Sunday at the Speedway Configuration</h3>
+               {{ form.sats_rate.label }}
+               {{ form.sats_rate }}
+               <br>
+
+               <h3>Test Lamps</h3>
+               {{ form.test_red }} Red On
+               {{ form.test_yellow }} Yellow On
+               {{ form.test_green }} Green On
+               <br>
+               {{ form.submit }}
+            
+      </form>
+      
+   </body>
+</html>

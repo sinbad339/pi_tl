@@ -1,0 +1,9 @@
+Mode,Parking Distance
+TL Rate,20
+GreenYellowDist,80
+YellowRedDist,33
+histersis,2
+SpeedRate,100
+ForceRed,False
+ForceYellow,False
+ForceGreen,False
