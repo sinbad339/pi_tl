@@ -43,14 +43,14 @@ def run_amok(q):
 
     TRIG = 4
     ECHO = 3
-    
+
     RedDrv = 17
     YelDrv = 27
     GrnDrv = 22
 
     GPIO.setup(TRIG,GPIO.OUT)
     GPIO.setup(ECHO,GPIO.IN)
-    
+
     GPIO.setup(RedDrv,GPIO.OUT)
     GPIO.setup(YelDrv,GPIO.OUT)
     GPIO.setup(GrnDrv,GPIO.OUT)
@@ -86,8 +86,9 @@ def run_amok(q):
 
             old_mode = deepcopy(mode)
             print "I'm doing ", mode
-            
+
             filt_dist = 0.0
+            go2sleep = False
 
         if mode == "Traffic Light":
             if green_state == 1:
@@ -157,9 +158,7 @@ def run_amok(q):
 	    			green_state = 0
 
             if abs(distance - filt_dist) < 3.0:
-				red_state = 0
-				yellow_state = 0
-				green_state = 0
+				go2sleep = True
 
             filt_dist = filt_dist * (1 - 1/240.0) + distance/240.0
             print('Filtered Distance: {} inches'.format(filt_dist))
@@ -207,17 +206,24 @@ def run_amok(q):
             this_cfg = q.get()
             print "\n\n\nGot a new configuration\n\n\n"
 
-        if red_state == 1:
-            GPIO.output(RedDrv, True)
-        else:
-			GPIO.output(RedDrv, False)
+        if go2sleep:
+            GPIO.output(RedDrv, False)
+            GPIO.output(YelDrv, False)
+            GPIO.output(GrnDrv, False)
 
-        if yellow_state == 1:
-            GPIO.output(YelDrv, True)
         else:
-			GPIO.output(YelDrv, False)
 
-        if green_state == 1:
-            GPIO.output(GrnDrv, True)
-        else:
-			GPIO.output(GrnDrv, False)
+            if red_state == 1:
+                GPIO.output(RedDrv, True)
+            else:
+    			GPIO.output(RedDrv, False)
+
+            if yellow_state == 1:
+                GPIO.output(YelDrv, True)
+            else:
+    			GPIO.output(YelDrv, False)
+
+            if green_state == 1:
+                GPIO.output(GrnDrv, True)
+            else:
+    			GPIO.output(GrnDrv, False)
